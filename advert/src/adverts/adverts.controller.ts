@@ -22,8 +22,8 @@ export class AdvertsController {
       }),
     }),
   )
-  create(@Body() createAdvertDto: CreateAdvertDto, @UploadedFile() file: Express.Multer.File) {
-    return this.advertsService.create(createAdvertDto, file);
+  create(@Body() createAdvertDto: CreateAdvertDto) {
+    return this.advertsService.create(createAdvertDto);
   }
 
   @Get()
@@ -33,16 +33,16 @@ export class AdvertsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.advertsService.findOne(+id);
+    return this.advertsService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAdvertDto: UpdateAdvertDto) {
-    return this.advertsService.update(+id, updateAdvertDto);
+    return this.advertsService.update(id, updateAdvertDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.advertsService.remove(+id);
+    return this.advertsService.remove(id);
   }
 }
